@@ -37,18 +37,50 @@ for(const property in hourObjec){
     // x = property;
     // console.log(`${hourObjec[property]}`);
     let propVal = $(hourObjec[property]);
+
+    let forceIntFromObj = parseInt(propVal[0]);
+    let forceIntFromMoment = parseInt(currentHour);
+
     
     // console.log(propVal);
-    // console.log(propVal[0]);
+    console.log(forceIntFromObj);
+    console.log(forceIntFromMoment)
+    console.log("property :" + property);
     // console.log(property);
 
-    if(propVal[0] === currentHour){
-        console.log(property);
+
+    //hours in the future - green
+    if(forceIntFromMoment < forceIntFromObj){
+        // console.log(property);
         // ??? is there a way to select this with jQuery
         let coloredEl = document.getElementsByClassName(property);
         console.log(coloredEl);
         // coloredEl.style.backgroundColor = "red";
         coloredEl[0].setAttribute("style", "background-color: green");
+     
+    };
+
+
+    // hours in the past  color === red
+    if(forceIntFromMoment > forceIntFromObj){
+        // console.log(property);
+        // ??? is there a way to select this with jQuery
+        let coloredEl = document.getElementsByClassName(property);
+        console.log(coloredEl);
+        // coloredEl.style.backgroundColor = "red";
+        coloredEl[0].setAttribute("style", "background-color: red");
+     
+    };
+
+    // check for current hour : color grey
+    // this works b/c both values are strings
+    if(propVal[0] === currentHour){
+        // console.log(property);
+        // ??? is there a way to select this with jQuery
+        let coloredEl = document.getElementsByClassName(property);
+        // console.log(coloredEl);
+        // coloredEl.style.backgroundColor = "red";
+        coloredEl[0].setAttribute("style", "background-color: grey");
      
     };
 
